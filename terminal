@@ -4,6 +4,9 @@ player2 = "pseudo2"
 good_password1 = ["mot de passe1"]
 good_password2 = [ "mot de passe2"]
 password_ok = False
+terminal_launched = True
+terminal_name = "Portalia"
+user_command = ""
 while not password_ok:
   password = input("Mot de passe: ")
   time.sleep(0.5)
@@ -17,20 +20,16 @@ while not password_ok:
        password_ok = True
   else:
     print("Refusé !!!")
-  
-
-terminal_launched = True
-terminal_name = "Portalia"
-user_command = ""
    
 
 def task_help():
      print("\
- /================================================\\\n\
- |help    : affiche les commandes disponibles     |\n\
- |quit    : ferme la console                      |\n\
- |name    : choisis un nouveau nom pour le serveur|\n\
- \\================================================/\n\
+ /==========================================================\\\n\
+ |         LISTE DES COMMANDES DISPONIBLES                  |\n\
+ |help    : affiche les commandes disponibles               |\n\
+ |quit    : ferme la console                                |\n\
+ |name    : choisis un nouveau nom pour le serveur(not work)|\n\
+ \\==========================================================/\n\
 ")
 
 def task_exit():
@@ -39,7 +38,7 @@ def task_exit():
 
 
 def task_name():
-    terminal_name = input("Choisis un nouveau nom pour le terminal: ")
+    terminal_name = input("Choisis un nouveau nom pour le serveur: ")
 
 def task_unknown():
     print("Commande inconnue.")
@@ -53,5 +52,5 @@ dico_task = {
      }
 
 while terminal_launched :
- user_command = input("[{}]> ".format(terminal_name))
+ user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
