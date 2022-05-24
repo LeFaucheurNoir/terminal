@@ -1,8 +1,39 @@
 import time
 
-while terminal_launched =True :
+layer1 = "pseudo1"
+player2 = "pseudo2"
+good_password1 = ["mot de passe1"]
+good_password2 = [ "mot de pass2"]
+password_ok = False
+while not password_ok:
+  password = input("Mot de passe: ")
+  time.sleep(0.5)
+  if password in good_password2:
+    print("Accépté.")
+    print("Bienvenue {}.".format(player2))
+    password_ok = True
+  elif password in good_password1:
+       print("Accépté.")
+       print("Bienvenue {}.".format(player1))
+       password_ok = True
+  else:
+    print("Refusé !!!")
 
  terminal_launched = True
  terminal_name = "command"
  user_command = ""
  
+ def task_exit():
+    global terminzl_launched
+    terminal_launched = False
+def task_name():
+    terminal_name = input("Choisis un nouveau nom pour devant les commandes: ")
+    
+dico_task = {
+     'help'    : task_help,
+     '?'       : task_help,
+     'quit'    : task_exit,
+     'exit'    : task_exit,
+     'name'    : task_name,
+     }
+     
