@@ -39,7 +39,7 @@ def task_exit():
 
 
 def task_name():
-    terminal_name = input("Choisis un nouveau nom pour le serveur: ")
+    terminal_name = input("Choisis un nouveau nom pour le terminal: ")
 
 def task_unknown():
     print("Commande inconnue.")
