@@ -2,7 +2,7 @@ import time
 player1 = "pseudo1"
 player2 = "pseudo2"
 good_password1 = ["mot de passe1"]
-good_password2 = [ "mot de passe2"]
+good_password2 = ["mot de passe2"]
 password_ok = False
 terminal_launched = True
 terminal_name = "Portalia"
