@@ -1,9 +1,8 @@
 import time
-
-layer1 = "pseudo1"
+player1 = "pseudo1"
 player2 = "pseudo2"
 good_password1 = ["mot de passe1"]
-good_password2 = [ "mot de pass2"]
+good_password2 = [ "mot de passe2"]
 password_ok = False
 while not password_ok:
   password = input("Mot de passe: ")
@@ -18,17 +17,33 @@ while not password_ok:
        password_ok = True
   else:
     print("Refusé !!!")
+  
 
- terminal_launched = True
- terminal_name = "command"
- user_command = ""
- 
- def task_exit():
-    global terminzl_launched
+terminal_launched = True
+terminal_name = "Portalia"
+user_command = ""
+   
+
+def task_help():
+     print("\
+ /================================================\\\n\
+ |help    : affiche les commandes disponibles     |\n\
+ |quit    : ferme la console                      |\n\
+ |name    : choisis un nouveau nom pour le serveur|\n\
+ \\================================================/\n\
+")
+
+def task_exit():
+    global terminal_launched
     terminal_launched = False
+
+
 def task_name():
-    terminal_name = input("Choisis un nouveau nom pour devant les commandes: ")
-    
+    terminal_name = input("Choisis un nouveau nom pour le serveur: ")
+
+def task_unknown():
+    print("Commande inconnue.")
+
 dico_task = {
      'help'    : task_help,
      '?'       : task_help,
@@ -36,4 +51,7 @@ dico_task = {
      'exit'    : task_exit,
      'name'    : task_name,
      }
-     
+
+while terminal_launched :
+ user_command = input("[{}]> ".format(terminal_name))
+ dico_task.get(user_command, task_unknown)()
