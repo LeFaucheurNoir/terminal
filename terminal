@@ -1,5 +1,9 @@
-#tout est très important
+#tout est important
 import time
+
+#pour les liens
+site = "https://portalia-1.jimdosite.com/"
+server_discord = "https://discord.io/Portaliafr"
 
 #les personnes
 player1 = "pseudo1"
@@ -10,7 +14,7 @@ good_password1 = ["mot de passe1"]
 good_password2 = ["mot de passe2"]
 password_ok = False
 
-#les choses du terminal
+#pour le terminal
 terminal_launched = True
 terminal_name = "Portalia"
 
@@ -32,39 +36,47 @@ while not password_ok:
   else:
     print("Refusé !!!")
    
-
 #le help
 def task_help():
      print("\
- /==========================================================\\\n\
- |         LISTE DES COMMANDES DISPONIBLES                  |\n\
- |help    : affiche les commandes disponibles               |\n\
- |quit    : ferme la console                                |\n\
+ /===========================================================\\\n\
+ |         LISTE DES COMMANDES DISPONIBLES                   |\n\
+ |help    : affiche les commandes disponibles                |\n\
+ |quit    : ferme la console                                 |\n\
  |name    : choisis un nouveau nom pour le terminal(not work)|\n\
- \\==========================================================/\n\
+ \\===========================================================/\n\
 ")
 
-#pour quitter
+#le exit
 def task_exit():
     global terminal_launched
     terminal_launched = False
 
 
-#pour changer le nom mais ne marche pas encore
+#le name qui ne marche pas encore
 def task_name():
     terminal_name = input("Choisis un nouveau nom pour le terminal: ")
 
-#si la commande n'est pas connue
+#le site et le serveur
+def task_site():
+  print("\
+    Le site du créateur est: {}\n\
+    le site ne sert pas que pour le code il sert aussi pour minecraft et roblox\n\
+    n'ésite pas a rejoindre le serveur minecraft".format(site))
+  print("    et le serveur discord ets : {}".format(server_discord))
+  
+ #pour une commande inconue
 def task_unknown():
     print("Commande inconnue.")
 
-#le dico des commandes non affiché pour la machine
+#le help pour la machine
 dico_task = {
      'help'    : task_help,
      '?'       : task_help,
      'quit'    : task_exit,
      'exit'    : task_exit,
      'name'    : task_name,
+     'site'    : task_site,
      }
 
 #pour le terminal
