@@ -1,12 +1,23 @@
+#tout est très important
 import time
+
+#les personnes
 player1 = "pseudo1"
 player2 = "pseudo2"
+
+#les mots de passes
 good_password1 = ["mot de passe1"]
 good_password2 = ["mot de passe2"]
 password_ok = False
+
+#les choses du terminal
 terminal_launched = True
 terminal_name = "Portalia"
+
+#pour les commandes
 user_command = ""
+
+#la boucle
 while not password_ok:
   password = input("Mot de passe: ")
   time.sleep(0.5)
@@ -22,27 +33,32 @@ while not password_ok:
     print("Refusé !!!")
    
 
+#le help
 def task_help():
      print("\
  /==========================================================\\\n\
  |         LISTE DES COMMANDES DISPONIBLES                  |\n\
  |help    : affiche les commandes disponibles               |\n\
  |quit    : ferme la console                                |\n\
- |name    : choisis un nouveau nom pour le serveur(not work)|\n\
+ |name    : choisis un nouveau nom pour le terminal(not work)|\n\
  \\==========================================================/\n\
 ")
 
+#pour quitter
 def task_exit():
     global terminal_launched
     terminal_launched = False
 
 
+#pour changer le nom mais ne marche pas encore
 def task_name():
-    terminal_name = input("Choisis un nouveau nom pour le serveur: ")
+    terminal_name = input("Choisis un nouveau nom pour le terminal: ")
 
+#si la commande n'est pas connue
 def task_unknown():
     print("Commande inconnue.")
 
+#le dico des commandes non affiché pour la machine
 dico_task = {
      'help'    : task_help,
      '?'       : task_help,
@@ -51,6 +67,7 @@ dico_task = {
      'name'    : task_name,
      }
 
+#pour le terminal
 while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
