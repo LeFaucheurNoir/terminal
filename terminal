@@ -1,1 +1,8 @@
-terminal
+import time
+
+while terminal_launched =True :
+
+ terminal_launched = True
+ terminal_name = "command"
+ user_command = ""
+ 
