@@ -23,6 +23,16 @@ terminal_name = "Portalia"
 #pour les commandes
 user_command = ""
 
+#le message de bienvenue
+print("\
+ /===========================================\\\n\
+ |                                           |\n\
+ |                Bienvenue !!!              |\n\
+ |                                           |\n\
+ \\===========================================/\n\
+")
+ 
+
 #la boucle
 while not password_ok:
   password = input("Mot de passe: ")
@@ -74,6 +84,9 @@ def task_site():
 def task_unknown():
     print("Commande inconnue.")
 
+def task_lock():
+  return password
+
 #le help pour la machine
 dico_task = {
      'help'    : task_help,
@@ -82,6 +95,7 @@ dico_task = {
      'exit'    : task_exit,
      'name'    : task_name,
      'site'    : task_site,
+     'lock'    : task_lock,
      }
 
 #pour le terminal
