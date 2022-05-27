@@ -44,7 +44,10 @@ def task_help():
  /===========================================================\\\n\
  |         LISTE DES COMMANDES DISPONIBLES                   |\n\
  |help    : affiche les commandes disponibles                |\n\
- |quit    : ferme la console                                 |\n\
+ |?       : affiche les commandes disponibles                |\n\
+ |quit    : ferme le terminal                                |\n\
+ |quit    : ferme le terminal                                |\n\
+ |site    : affiche le site et le discord                    |\n\
  |name    : choisis un nouveau nom pour le terminal(not work)|\n\
  \\===========================================================/\n\
 ")
