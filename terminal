@@ -65,7 +65,7 @@ def task_help():
  |quit    : ferme le terminal                                      |\n\
  |exit    : ferme le terminal                                      |\n\
  |site    : affiche le site et le discord                          |\n\
- |name    : choisis un nouveau nom pour le terminal(not work)      |\n\
+ |name    : choisis un nouveau nom pour le terminal                |\n\
  |lock    : verrouille le terminal code a refaire                  |\n\
  |update  : affiche les mises a jours                              |\n\
  \\=================================================================/\n\
@@ -79,7 +79,7 @@ def task_exit():
 
 #le name qui ne marche pas encore
 def task_name():
-  global terminal_launched
+  global terminal_name
   terminal_name = input("Choisis un nouveau nom pour le terminal: ")
 
 #le site et le serveur
@@ -112,8 +112,8 @@ def task_update() :
   print("\
                               Mises a jours\n\
 \n\
-Ajout de la commande lock, developpement de la commande exit dans les mots de passes,\n\
-réparation en court de la commande name te ajout de la commande\n\
+Ajouts de la commande lock, developpement de la commande exit dans les mots de passes,\n\
+réparation en cours de la commande name te ajouts de la commande\n\
 update.\n\
     ")
 
