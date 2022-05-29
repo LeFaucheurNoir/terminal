@@ -15,7 +15,7 @@ player2 = "pseudo2"
 #les mots de passes
 good_password1 = ["mot de passe1"]
 good_password2 = ["mot de passe2"]
-exit_password = ["exit"]
+exit_password = ["exit","quit"]
 password_ok = False
 password_ok2 = True
 
@@ -50,25 +50,26 @@ while not password_ok :
        print("Bienvenue {}.".format(player1))
        password_ok = True
   elif password in exit_password :
-    terminal_launched = False
-    print("Vous quittez le termnial.")
+   exit()
   else:
     print("Refusé !!!")
    
 #le help
 def task_help():
      print("\
- /=================================================================\\\n\
- |               LISTE DES COMMANDES DISPONIBLES                   |\n\
- |help    : affiche les commandes disponibles                      |\n\
- |?       : affiche les commandes disponibles                      |\n\
- |quit    : ferme le terminal                                      |\n\
- |exit    : ferme le terminal                                      |\n\
- |site    : affiche le site et le discord                          |\n\
- |name    : choisis un nouveau nom pour le terminal                |\n\
- |lock    : verrouille le terminal code a refaire                  |\n\
- |update  : affiche les mises a jours                              |\n\
- \\=================================================================/\n\
+ /====================================================================\\\n\
+ |               LISTE DES COMMANDES DISPONIBLES                      |\n\
+ |help    : affiche les commandes disponibles                         |\n\
+ |?       : affiche les commandes disponibles                         |\n\
+ |quit    : ferme le terminal                                         |\n\
+ |exit    : ferme le terminal                                         |\n\
+ |site    : affiche le site et le discord                             |\n\
+ |name    : choisis un nouveau nom pour le terminal                   |\n\
+ |lock    : verrouille le terminal code a refaire                     |\n\
+ |update  : affiche les mises a jours                                 |\n\
+ |pseudo1 : change le pseudo de player1 à refaire à chaque redemarrage|\n\
+ |pseudo2 : change le pseudo de player2 à refaire à chaque redemarrage|\n\
+ \\====================================================================/\n\
 ")
 
 #le exit
@@ -100,11 +101,14 @@ def task_lock():
     password2 = input("Mot de passe : ")
     time.sleep(0.5)
     if password2 in good_password1 :
-      print("Accépté {}.".format(player1))
+      print("Accépté : {}.".format(player1))
       password_ok2 = True
     elif password2 in good_password2 :
-      print("Accépté {}.".format(player2))
+      print("Accépté : {}.".format(player2))
       password_ok2 = True
+    elif password in exit_password :
+      print("salut")
+      exit()
     else :
       print("Refusé")
 
@@ -118,6 +122,14 @@ update.\n\
     ")
 
 
+def task_pseudo1():
+  global player1
+  player1 = input("Choisis un nouveau pseudo pour player1 : ")
+
+def task_pseudo2():
+  global player2
+  player2 = input("Choisis un nouveau pseudo pour player2 : ")
+
 
 #le help pour la machine
 dico_task = {
@@ -129,6 +141,8 @@ dico_task = {
      'site'    : task_site,
      'lock'    : task_lock,
      'update'  : task_update,
+     'pseudo1' : task_pseudo1,
+     'pseudo2' : task_pseudo2,
      }
 
 #pour le terminal
