@@ -67,6 +67,7 @@ def task_help():
  |site    : affiche le site et le discord                          |\n\
  |name    : choisis un nouveau nom pour le terminal(not work)      |\n\
  |lock    : verrouille le terminal code a refaire                  |\n\
+ |update  : affiche les mises a jours                              |\n\
  \\=================================================================/\n\
 ")
 
@@ -84,10 +85,10 @@ def task_name():
 #le site et le serveur
 def task_site():
   print("\
-    Le site du créateur est: {}\n\
-    le site ne sert pas que pour le code il sert aussi pour minecraft et roblox\n\
-    n'ésite pas a rejoindre le serveur minecraft".format(site))
-  print("    et le serveur discord ets : {}".format(server_discord))
+Le site du créateur est: {}\n\
+le site ne sert pas que pour le code il sert aussi pour minecraft et roblox\n\
+n'ésite pas a rejoindre le serveur minecraft".format(site))
+  print("et le serveur discord ets : {}".format(server_discord))
   
  #pour une commande inconue
 def task_unknown():
@@ -107,6 +108,15 @@ def task_lock():
     else :
       print("Refusé")
 
+def task_update() :
+  print("\
+                              Mises a jours\n\
+\n\
+Ajout de la commande lock, developpement de la commande exit dans les mots de passes,\n\
+réparation en court de la commande name te ajout de la commande\n\
+update.\n\
+    ")
+
 
 
 #le help pour la machine
@@ -118,12 +128,13 @@ dico_task = {
      'name'    : task_name,
      'site'    : task_site,
      'lock'    : task_lock,
+     'update'  : task_update,
      }
 
 #pour le terminal
 while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
- 
- 
- #La Suite Bientot
+
+
+#La suite bientot
