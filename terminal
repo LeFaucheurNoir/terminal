@@ -7,6 +7,7 @@ import time
 site = "https://portalia-1.jimdosite.com/"
 server_discord = "https://discord.io/Portaliafr"
 
+
 #les personnes
 player1 = "pseudo1"
 player2 = "pseudo2"
@@ -14,11 +15,14 @@ player2 = "pseudo2"
 #les mots de passes
 good_password1 = ["mot de passe1"]
 good_password2 = ["mot de passe2"]
+exit_password = ["exit"]
 password_ok = False
+password_ok2 = True
 
 #pour le terminal
-terminal_launched = True
 terminal_name = "Portalia"
+terminal_launched = True
+
 
 #pour les commandes
 user_command = ""
@@ -34,8 +38,8 @@ print("\
  
 
 #la boucle
-while not password_ok:
-  password = input("Mot de passe: ")
+while not password_ok :
+  password = input("Mot de passe : ")
   time.sleep(0.5)
   if password in good_password2:
     print("Accépté.")
@@ -45,21 +49,26 @@ while not password_ok:
        print("Accépté.")
        print("Bienvenue {}.".format(player1))
        password_ok = True
+  elif password in exit_password :
+    terminal_launched = False
+    password_ok = False
+    print("Vous quittez le termnial.")
   else:
     print("Refusé !!!")
    
 #le help
 def task_help():
      print("\
- /===========================================================\\\n\
- |         LISTE DES COMMANDES DISPONIBLES                   |\n\
- |help    : affiche les commandes disponibles                |\n\
- |?       : affiche les commandes disponibles                |\n\
- |quit    : ferme le terminal                                |\n\
- |exit    : ferme le terminal                                |\n\
- |site    : affiche le site et le discord                    |\n\
- |name    : choisis un nouveau nom pour le terminal(not work)|\n\
- \\===========================================================/\n\
+ /=================================================================\\\n\
+ |               LISTE DES COMMANDES DISPONIBLES                   |\n\
+ |help    : affiche les commandes disponibles                      |\n\
+ |?       : affiche les commandes disponibles                      |\n\
+ |quit    : ferme le terminal                                      |\n\
+ |exit    : ferme le terminal                                      |\n\
+ |site    : affiche le site et le discord                          |\n\
+ |name    : choisis un nouveau nom pour le terminal(not work)      |\n\
+ |lock    : verrouille le terminal code a refaire(en developpement)|\n\
+ \\=================================================================/\n\
 ")
 
 #le exit
@@ -70,7 +79,8 @@ def task_exit():
 
 #le name qui ne marche pas encore
 def task_name():
-    terminal_name = input("Choisis un nouveau nom pour le terminal: ")
+  global terminal_launched
+  terminal_name = input("Choisis un nouveau nom pour le terminal: ")
 
 #le site et le serveur
 def task_site():
@@ -85,7 +95,20 @@ def task_unknown():
     print("Commande inconnue.")
 
 def task_lock():
-  return password
+  password_ok2 = False
+  while not password_ok2 :
+    password2 = input("Mot de passe : ")
+    time.sleep(0.5)
+    if password2 in good_password1 :
+      print("Accépté {}.".format(player1))
+      password_ok2 = True
+    elif password2 in good_password2 :
+      print("Accépté {}.".format(player2))
+      password_ok2 = True
+    else :
+      print("Refusé")
+
+
 
 #le help pour la machine
 dico_task = {
