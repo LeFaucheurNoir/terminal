@@ -125,3 +125,4 @@ dico_task = {
 while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
+
