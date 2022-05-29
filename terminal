@@ -66,7 +66,7 @@ def task_help():
  |exit    : ferme le terminal                                      |\n\
  |site    : affiche le site et le discord                          |\n\
  |name    : choisis un nouveau nom pour le terminal(not work)      |\n\
- |lock    : verrouille le terminal code a refaire(en developpement)|\n\
+ |lock    : verrouille le terminal code a refaire                  |\n\
  \\=================================================================/\n\
 ")
 
@@ -124,3 +124,6 @@ dico_task = {
 while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
+ 
+ 
+ #La Suite Bientot
