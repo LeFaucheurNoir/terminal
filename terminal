@@ -51,7 +51,6 @@ while not password_ok :
        password_ok = True
   elif password in exit_password :
     terminal_launched = False
-    password_ok = False
     print("Vous quittez le termnial.")
   else:
     print("Refusé !!!")
@@ -125,4 +124,3 @@ dico_task = {
 while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
-
