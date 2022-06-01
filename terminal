@@ -7,17 +7,19 @@ import time
 site = "https://portalia-1.jimdosite.com/"
 server_discord = "https://discord.io/Portaliafr"
 
-
 #les personnes
 player1 = "pseudo1"
 player2 = "pseudo2"
 
-#les mots de passes
+#pour les mots de passes
 good_password1 = ["mot de passe1"]
 good_password2 = ["mot de passe2"]
 exit_password = ["exit","quit"]
 password_ok = False
 password_ok2 = True
+error_password = 10
+test = 1
+
 
 #pour le terminal
 terminal_name = "Portalia"
@@ -29,15 +31,22 @@ user_command = ""
 
 #le message de bienvenue
 print("\
- /===========================================\\\n\
- |                                           |\n\
- |                Bienvenue !!!              |\n\
- |                                           |\n\
- \\===========================================/\n\
-")
- 
+  ")
+time.sleep(0.5)
+print("/===========================================\\")
+time.sleep(0.5)
+print("|                                           |")
+time.sleep(0.5)
+print("|                Bienvenue !!!              |")
+time.sleep(0.5)
+print("|                                           |")
+time.sleep(0.5)
+print("\\===========================================/")
 
-#la boucle
+
+
+ 
+#la boucle du mot de passe
 while not password_ok :
   password = input("Mot de passe : ")
   time.sleep(0.5)
@@ -53,24 +62,44 @@ while not password_ok :
    exit()
   else:
     print("Refusé !!!")
+    error_password = error_password - test
+    
+  if error_password == 0 :
+    print("Vous avez raté trop de fois votre mot de passe pour recommencer relancez le terminal.")
+    exit()
    
 #le help
 def task_help():
      print("\
- /====================================================================\\\n\
- |               LISTE DES COMMANDES DISPONIBLES                      |\n\
- |help    : affiche les commandes disponibles                         |\n\
- |?       : affiche les commandes disponibles                         |\n\
- |quit    : ferme le terminal                                         |\n\
- |exit    : ferme le terminal                                         |\n\
- |site    : affiche le site et le discord                             |\n\
- |name    : choisis un nouveau nom pour le terminal                   |\n\
- |lock    : verrouille le terminal code a refaire                     |\n\
- |update  : affiche les mises a jours                                 |\n\
- |pseudo1 : change le pseudo de player1 à refaire à chaque redemarrage|\n\
- |pseudo2 : change le pseudo de player2 à refaire à chaque redemarrage|\n\
- \\====================================================================/\n\
-")
+       ")
+     print("/====================================================================\\")
+     time.sleep(0.5)
+     print("|               LISTE DES COMMANDES DISPONIBLES                      |")
+     time.sleep(0.5)
+     print("|help    : affiche les commandes disponibles                         |") 
+     time.sleep(0.5)
+     print("|?       : affiche les commandes disponibles                         |")
+     time.sleep(0.5)
+     print("|quit    : ferme le terminal                                         |")
+     time.sleep(0.5)
+     print("|exit    : ferme le terminal                                         |")
+     time.sleep(0.5)
+     print("|site    : affiche le site et le discord                             |")
+     time.sleep(0.5)
+     print("|name    : choisis un nouveau nom pour le terminal                   |")
+     time.sleep(0.5)
+     print("|lock    : verrouille le terminal code a refaire                     |")
+     time.sleep(0.5)
+     print("|update  : affiche les mises a jours                                 |")
+     time.sleep(0.5)
+     print("|pseudo1 : change le pseudo de player1 à refaire à chaque redemarrage|")
+     time.sleep(0.5)
+     print("|pseudo2 : change le pseudo de player2 à refaire à chaque redemarrage|")
+     time.sleep(0.5)
+     print("|dessin  : dessinne un petit personnage sympatique                   |")
+     time.sleep(0.5)
+     print("\\====================================================================/")
+
 
 #le exit
 def task_exit():
@@ -86,15 +115,21 @@ def task_name():
 #le site et le serveur
 def task_site():
   print("\
-Le site du créateur est: {}\n\
-le site ne sert pas que pour le code il sert aussi pour minecraft et roblox\n\
-n'ésite pas a rejoindre le serveur minecraft".format(site))
+    ")
+  print("Le site du créateur est: {}".format(site))
+  time.sleep(0.5)
+  print("le site ne sert pas que pour le code il sert aussi pour minecraft et roblox")
+  time.sleep(0.5)
+  print("n'ésite pas a rejoindre le serveur minecraft")
+  time.sleep(0.5)
   print("et le serveur discord ets : {}".format(server_discord))
   
  #pour une commande inconue
 def task_unknown():
     print("Commande inconnue.")
 
+
+#le lock pour refaire le mot de passe
 def task_lock():
   password_ok2 = False
   while not password_ok2 :
@@ -112,23 +147,56 @@ def task_lock():
     else :
       print("Refusé")
 
+
+#les mises à jours
 def task_update() :
   print("\
-                              Mises a jours\n\
-\n\
-Ajouts de la commande lock, developpement de la commande exit dans les mots de passes,\n\
-réparation en cours de la commande name te ajouts de la commande\n\
-update.\n\
     ")
+  print("                              Mises a jours")
+  time.sleep(0.5)
+  print("\
+     ")
+  print("Ajouts de la commande lock, developpement de la commande exit dans les mots de passes,")
+  time.sleep(0.5)
+  print("réparation en cours de la commande name, ajouts de la commande update,")
+  time.sleep(0.5)
+  print("ajout de temps entre chaque affichage, ajouts d'un nombre d'essai limitée pour le")
+  time.sleep(0.5)
+  print("mot de passe, ajout de nouvelles explication de paragraphe.")
 
 
+#pour changer le pseudo1
 def task_pseudo1():
   global player1
   player1 = input("Choisis un nouveau pseudo pour player1 : ")
 
+#pour changer le pseudo2
 def task_pseudo2():
   global player2
   player2 = input("Choisis un nouveau pseudo pour player2 : ")
+
+
+#le dessin du personnage
+def task_dessin() :
+ print("\
+")
+ print("      ___")
+ time.sleep(0.5)
+ print("     /I I\\")
+ time.sleep(0.5)
+ print("    |  d  | ")
+ time.sleep(0.5)
+ print("     \_=_/")
+ time.sleep(0.5)
+ print("     _| |_")   
+ time.sleep(0.5)
+ print("    | | | |")
+ time.sleep(0.5)
+ print("    | | | |")
+ time.sleep(0.5)
+ print("      | |")
+ time.sleep(0.5)
+ print("     _| |_")
 
 
 #le help pour la machine
@@ -143,6 +211,9 @@ dico_task = {
      'update'  : task_update,
      'pseudo1' : task_pseudo1,
      'pseudo2' : task_pseudo2,
+     'pseudo 1': task_pseudo1,
+     'pseudo 2': task_pseudo2,
+     'dessin'  : task_dessin,
      }
 
 #pour le terminal
@@ -150,5 +221,4 @@ while terminal_launched :
  user_command = input(f"[{terminal_name}]> ")
  dico_task.get(user_command, task_unknown)()
 
-
-#La suite bientot
+#la suite bientôt
