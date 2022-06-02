@@ -1,6 +1,6 @@
 Ici figure les commandes du terminal et l'action de la commande.
 
-help : affiche les commandes disponibles mais de puis le terminal. 
+help : affiche les commandes disponibles mais de puis le terminal.                                                                                                       
 ? : même action que le help. 
 quit : arrête le terminal. 
 exit : même action que quit. 
