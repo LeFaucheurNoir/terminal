@@ -1,7 +1,8 @@
 #tout est important
-#pour l'utiliser il vous faut la versin 3.10 de python sur votre machine et un logiciel pour coder
-#il vous suffiras de copier le code et de le coller dans le logiciel de codage avec le language python
+#pour l'utiliser il vous faut une version de python sur votre machine et un logiciel pour coder
+#il vous suffiras de copier le code et de le coler dans le logiciel de codage avec le language python
 import time
+from tkinter import *
 
 #pour les liens
 site = "https://portalia-1.jimdosite.com/"
@@ -18,8 +19,11 @@ exit_password = ["exit","quit"]
 password_ok = False
 password_ok2 = True
 error_password = 10
-test = 1
-
+admin_password = True #en création
+admin_vrai = True #en création
+admin_faux = False #en création
+password_ok3 = True
+good_password3 = ["A69b74C12"]
 
 #pour le terminal
 terminal_name = "Portalia"
@@ -62,12 +66,34 @@ while not password_ok :
    exit()
   else:
     print("Refusé !!!")
-    error_password = error_password - test
+    error_password = error_password - 1
     
   if error_password == 0 :
     print("Vous avez raté trop de fois votre mot de passe pour recommencer relancez le terminal.")
     exit()
    
+#fais une fenettre qui demande si oui ou non vous voulez quitter le terminal
+def task_exit():
+ window1 = Tk()
+ frame = Frame(window1, bg='blue', bd=2, relief=SUNKEN)
+
+ window1.title("EXIT")
+ window1.geometry("500x200")
+ window1.minsize(480, 360)
+
+ window1.config(background='')
+ Label_title = Label (window1, text="Voulez-vous quitter ?", font=("Courrier", 40), bg='white', fg='black')
+ Label_title.pack(side=TOP, expand=YES)
+
+ accept_button = Button(window1, text="Oui", font=("Courrier", 20), bg='white', fg='Black',command=exitall)
+ accept_button.pack(side=LEFT,pady=25,expand=YES)
+
+ refuse_button = Button(window1, text="Non", font=("Courrier", 20), bg='white', fg='Black',command=window1.destroy)
+ refuse_button.pack(side=RIGHT,pady=25,expand=YES)
+
+ window1.mainloop()
+
+
 #le help
 def task_help():
      print("\
@@ -80,9 +106,9 @@ def task_help():
      time.sleep(0.5)
      print("|?       : affiche les commandes disponibles                         |")
      time.sleep(0.5)
-     print("|quit    : ferme le terminal                                         |")
+     print("|quit    : affiche une fenettre d'exit                               |")
      time.sleep(0.5)
-     print("|exit    : ferme le terminal                                         |")
+     print("|exit    : affiche une fenettre d'exit                               |")
      time.sleep(0.5)
      print("|site    : affiche le site et le discord                             |")
      time.sleep(0.5)
@@ -102,15 +128,15 @@ def task_help():
 
 
 #le exit
-def task_exit():
-    global terminal_launched
-    terminal_launched = False
+def exitall():
+    exit()
 
 
 #le name qui ne marche pas encore
 def task_name():
   global terminal_name
-  terminal_name = input("Choisis un nouveau nom pour le terminal: ")
+  terminal_name = input("Choisissez un nouveau nom pour le terminal: ")
+
 
 #le site et le serveur
 def task_site():
@@ -122,9 +148,10 @@ def task_site():
   time.sleep(0.5)
   print("n'ésite pas a rejoindre le serveur minecraft")
   time.sleep(0.5)
-  print("et le serveur discord ets : {}".format(server_discord))
-  
- #pour une commande inconue
+  print("et le serveur discord est : {}".format(server_discord))
+
+
+#pour une commande inconue
 def task_unknown():
     print("Commande inconnue.")
 
@@ -142,7 +169,7 @@ def task_lock():
       print("Accépté : {}.".format(player2))
       password_ok2 = True
     elif password in exit_password :
-      print("salut")
+      print("Tu quittes le termnial.")
       exit()
     else :
       print("Refusé")
@@ -156,19 +183,15 @@ def task_update() :
   time.sleep(0.5)
   print("\
      ")
-  print("Ajouts de la commande lock, developpement de la commande exit dans les mots de passes,")
-  time.sleep(0.5)
-  print("réparation en cours de la commande name, ajouts de la commande update,")
-  time.sleep(0.5)
-  print("ajout de temps entre chaque affichage, ajouts d'un nombre d'essai limitée pour le")
-  time.sleep(0.5)
-  print("mot de passe, ajout de nouvelles explication de paragraphe.")
+  print("Ajouts d'une fenettre pour qui demande si oui ou non vous voulez quitter le terminal.")
+
 
 
 #pour changer le pseudo1
 def task_pseudo1():
   global player1
   player1 = input("Choisis un nouveau pseudo pour player1 : ")
+
 
 #pour changer le pseudo2
 def task_pseudo2():
@@ -199,13 +222,30 @@ def task_dessin() :
  print("     _| |_")
 
 
+def task_admin_password(): #en création
+     password_ok3 = False
+     while not password_ok3 :
+      password = input("Mot de passe : ")
+      time.sleep(0.5)
+      if password in good_password3 :
+        print("Accépté en tan que : Administrateur.")
+        password_ok3 = True
+        admin = True
+      elif password in exit_password :
+        print("Tu n'ais pas admin.")
+        password_ok3 = True
+      else :
+       print("Refusé")
+
+
+
+
 #le help pour la machine
-dico_task = {
+dico_task_no_admin = {
      'help'    : task_help,
      '?'       : task_help,
      'quit'    : task_exit,
      'exit'    : task_exit,
-     'name'    : task_name,
      'site'    : task_site,
      'lock'    : task_lock,
      'update'  : task_update,
@@ -214,11 +254,26 @@ dico_task = {
      'pseudo 1': task_pseudo1,
      'pseudo 2': task_pseudo2,
      'dessin'  : task_dessin,
+     'admin'   : task_admin_password,
+     'name'    : task_name,
      }
+
+
+dico_task_admin = {
+  'name' : task_name
+}
+
+
+while admin_vrai == False :
+  global admin
+  dico_task_admin.get(user_command, task_unknown)()
+  dico_task_no_admin.get(user_command, task_unknown)()
+
+
 
 #pour le terminal
 while terminal_launched :
- user_command = input(f"[{terminal_name}]> ")
- dico_task.get(user_command, task_unknown)()
+  user_command = input(f"[{terminal_name}]> ")
+  dico_task_no_admin.get(user_command, task_unknown)()
 
 #la suite bientôt
