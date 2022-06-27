@@ -19,9 +19,10 @@ exit_password = ["exit","quit"]
 password_ok = False
 password_ok2 = True
 error_password = 10
-admin_password = True #en création
-admin_vrai = True #en création
-admin_faux = False #en création
+admin_password = False #en création
+admin_vrai = False #en création
+admin_faux = True #en création
+admin = 0
 password_ok3 = True
 good_password3 = ["A69b74C12"]
 
@@ -32,6 +33,11 @@ terminal_launched = True
 
 #pour les commandes
 user_command = ""
+
+
+#le exit
+def exitall():
+    exit()
 
 #le message de bienvenue
 print("\
@@ -63,7 +69,24 @@ while not password_ok :
        print("Bienvenue {}.".format(player1))
        password_ok = True
   elif password in exit_password :
-   exit()
+     window1 = Tk()
+     frame = Frame(window1, bg='blue', bd=2, relief=SUNKEN)
+
+     window1.title("EXIT")
+     window1.geometry("500x200")
+     window1.minsize(480, 360)
+
+     window1.config(background='')
+     Label_title = Label (window1, text="Voulez-vous quitter ?", font=("Courrier", 40), bg='white', fg='black')
+     Label_title.pack(side=TOP, expand=YES)
+
+     accept_button = Button(window1, text="Oui", font=("Courrier", 20), bg='white', fg='Black',command=exitall)
+     accept_button.pack(side=LEFT,pady=25,expand=YES)
+
+     refuse_button = Button(window1, text="Non", font=("Courrier", 20), bg='white', fg='Black',command=window1.destroy)
+     refuse_button.pack(side=RIGHT,pady=25,expand=YES)
+
+     window1.mainloop()
   else:
     print("Refusé !!!")
     error_password = error_password - 1
@@ -127,15 +150,11 @@ def task_help():
      print("\\====================================================================/")
 
 
-#le exit
-def exitall():
-    exit()
-
 
 #le name qui ne marche pas encore
 def task_name():
   global terminal_name
-  terminal_name = input("Choisissez un nouveau nom pour le terminal: ")
+  terminal_name = input("Remplacer {} par : ".format(terminal_name))
 
 
 #le site et le serveur
@@ -228,9 +247,10 @@ def task_admin_password(): #en création
       password = input("Mot de passe : ")
       time.sleep(0.5)
       if password in good_password3 :
-        print("Accépté en tan que : Administrateur.")
+        print("Accépté en tant que : Administrateur.")
         password_ok3 = True
-        admin = True
+        admin = 1
+        admin_vrai == True
       elif password in exit_password :
         print("Tu n'ais pas admin.")
         password_ok3 = True
@@ -263,11 +283,10 @@ dico_task_admin = {
   'name' : task_name
 }
 
-
-while admin_vrai == False :
-  global admin
-  dico_task_admin.get(user_command, task_unknown)()
-  dico_task_no_admin.get(user_command, task_unknown)()
+if admin == 1 :
+ while admin_vrai == True :
+   dico_task_admin.get(user_command, task_unknown)()
+   dico_task_no_admin.get(user_command, task_unknown)()
 
 
 
