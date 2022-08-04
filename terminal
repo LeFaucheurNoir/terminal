@@ -3,6 +3,7 @@
 #il vous suffiras de copier le code et de le coler dans le logiciel de codage avec le language python
 import time
 from tkinter import *
+import webbrowser
 
 #pour les liens
 site = "https://portalia-1.jimdosite.com/"
@@ -13,18 +14,24 @@ player1 = "pseudo1"
 player2 = "pseudo2"
 
 #pour les mots de passes
-good_password1 = ["mot de passe1"]
-good_password2 = ["mot de passe2"]
+good_password1 = ["mot de passe1","1"]
+good_password2 = ["mot de passe2","2"]
+good_password3 = ["A69b74C12"]
+good_password4 = ["rep"]
+good_passwords1 = good_password1[0]
+good_passwords2 = good_password2[0]
+good_passwords3 = good_password3[0]
 exit_password = ["exit","quit"]
+crash_password = ["crash","stop"]
 password_ok = False
 password_ok2 = True
 error_password = 10
 admin_password = False #en création
 admin_vrai = False #en création
 admin_faux = True #en création
-admin = 0
+admin = "non"
 password_ok3 = True
-good_password3 = ["A69b74C12"]
+
 
 #pour le terminal
 terminal_name = "Portalia"
@@ -33,7 +40,56 @@ terminal_launched = True
 
 #pour les commandes
 user_command = ""
+user_admin_command = ""
 
+def siteadresse():
+  webbrowser.open_new_tab("https://portalia-1.jimdosite.com")
+
+
+def discordadresse():
+  webbrowser.open_new_tab("https://discord.io/Portaliafr")
+  
+
+def site():
+     windowsite = Tk()
+     frame = Frame(windowsite, bg='blue', bd=2, relief=SUNKEN)
+
+     windowsite.title("Site")
+     windowsite.geometry("500x200")
+     windowsite.minsize(480, 360)
+
+     windowsite.config(background='')
+     Label_title = Label (windowsite, text="Voulez-vous ouvrir la page du site ?", font=("Courrier", 40), bg='white', fg='black')
+     Label_title.pack(side=TOP, expand=YES)
+
+     accept_button = Button(windowsite, text="Oui", font=("Courrier", 20), bg='white', fg='Black',command=siteadresse)
+     accept_button.pack(side=LEFT,pady=25,expand=YES)
+
+     refuse_button = Button(windowsite, text="Non", font=("Courrier", 20), bg='white', fg='Black',command=windowsite.destroy)
+     refuse_button.pack(side=RIGHT,pady=25,expand=YES)
+
+     windowsite.mainloop()
+
+
+def discord():
+     windowdiscord = Tk()
+     frame = Frame(windowdiscord, bg='blue', bd=2, relief=SUNKEN)
+
+     windowdiscord.title("Discord")
+     windowdiscord.geometry("500x200")
+     windowdiscord.minsize(480, 360)
+
+     windowdiscord.config(background='')
+     Label_title = Label (windowdiscord, text="Voulez-vous rejoindre le discord ?", font=("Courrier", 40), bg='white', fg='black')
+     Label_title.pack(side=TOP, expand=YES)
+
+     accept_button = Button(windowdiscord, text="Oui", font=("Courrier", 20), bg='white', fg='Black',command=discordadresse)
+     accept_button.pack(side=LEFT,pady=25,expand=YES)
+
+     refuse_button = Button(windowdiscord, text="Non", font=("Courrier", 20), bg='white', fg='Black',command=windowdiscord.destroy)
+     refuse_button.pack(side=RIGHT,pady=25,expand=YES)
+
+     windowdiscord.mainloop()
 
 #le exit
 def exitall():
@@ -47,7 +103,7 @@ print("/===========================================\\")
 time.sleep(0.5)
 print("|                                           |")
 time.sleep(0.5)
-print("|                Bienvenue !!!              |")
+print("|                Bienvenue                  |")
 time.sleep(0.5)
 print("|                                           |")
 time.sleep(0.5)
@@ -68,6 +124,18 @@ while not password_ok :
        print("Accépté.")
        print("Bienvenue {}.".format(player1))
        password_ok = True
+  elif password in good_password4 :
+      print("\
+      ")
+      print("1.{}".format(good_passwords1))
+      time.sleep(0.5)
+      print("2.{}".format(good_passwords2))
+      time.sleep(0.5)
+      print("3.(admin) {}".format(good_passwords3))
+      time.sleep(0.5)
+      print("Si vous mettez le numéro du mot de passe cela marcheras également sauf le mot de passe admin.")
+      print("\
+      ")
   elif password in exit_password :
      window1 = Tk()
      frame = Frame(window1, bg='blue', bd=2, relief=SUNKEN)
@@ -87,6 +155,8 @@ while not password_ok :
      refuse_button.pack(side=RIGHT,pady=25,expand=YES)
 
      window1.mainloop()
+  elif password in crash_password :
+    exit()
   else:
     print("Refusé !!!")
     error_password = error_password - 1
@@ -139,13 +209,17 @@ def task_help():
      time.sleep(0.5)
      print("|lock    : verrouille le terminal code a refaire                     |")
      time.sleep(0.5)
-     print("|update  : affiche les mises a jours                                 |")
+     print("|info    : affiche les infos de la maj                               |")
      time.sleep(0.5)
      print("|pseudo1 : change le pseudo de player1 à refaire à chaque redemarrage|")
      time.sleep(0.5)
      print("|pseudo2 : change le pseudo de player2 à refaire à chaque redemarrage|")
      time.sleep(0.5)
-     print("|dessin  : dessinne un petit personnage sympatique                   |")
+     print("|dessin  : dessinne un petit personnage sympatique en ascii art      |")
+     time.sleep(0.5)
+     print("|secu    : affiche si la sécuritée est optimale                      |")
+     time.sleep(0.5)
+     print("|rep     : affiche les mots de passes                                |")
      time.sleep(0.5)
      print("\\====================================================================/")
 
@@ -158,16 +232,27 @@ def task_name():
 
 
 #le site et le serveur
-def task_site():
-  print("\
-    ")
-  print("Le site du créateur est: {}".format(site))
-  time.sleep(0.5)
-  print("le site ne sert pas que pour le code il sert aussi pour minecraft et roblox")
-  time.sleep(0.5)
-  print("n'ésite pas a rejoindre le serveur minecraft")
-  time.sleep(0.5)
-  print("et le serveur discord est : {}".format(server_discord))
+def task_sites():
+     windowsites = Tk()
+     frame = Frame(windowsites, bg='blue', bd=2, relief=SUNKEN)
+
+     windowsites.title("Sites")
+     windowsites.geometry("1700x1000")
+     windowsites.minsize(480, 360)
+
+     windowsites.config(background='')
+     Label_title = Label (windowsites, text="Voila le site pour le code minecraft et roblox et le discord.", font=("Courrier", 40), bg='white', fg='black')
+     Label_title.pack(side=TOP, expand=YES)
+
+     site_button = Button(windowsites, text="Site", font=("Courrier", 20), bg='white', fg='Black',command=site)
+     site_button.pack(side=LEFT,pady=25,expand=YES)
+
+     discord_button = Button(windowsites, text="Discord", font=("Courrier", 20), bg='white', fg='Black',command=discord)
+     discord_button.pack(side=RIGHT,pady=25,expand=YES)
+
+     quit_button = Button(windowsites, text="Exit", font=("Courrier", 20), bg='white', fg='Black',command=task_exit)
+
+     windowsites.mainloop()
 
 
 #pour une commande inconue
@@ -187,8 +272,39 @@ def task_lock():
     elif password2 in good_password2 :
       print("Accépté : {}.".format(player2))
       password_ok2 = True
-    elif password in exit_password :
-      print("Tu quittes le termnial.")
+    elif password2 in good_password4 :
+      print("\
+      ")
+      print("1.{}".format(good_passwords1))
+      time.sleep(0.5)
+      print("2.{}".format(good_passwords2))
+      time.sleep(0.5)
+      print("3.(admin) {}".format(good_passwords3))
+      time.sleep(0.5)
+      print("Si vous mettez le numéro du mot de passe cela marcheras également sauf le mot de passe admin.")
+      print("\
+      ")
+    elif password2 in exit_password :
+     window1 = Tk()
+     frame = Frame(window1, bg='blue', bd=2, relief=SUNKEN)
+
+     window1.title("EXIT")
+     window1.geometry("500x200")
+     window1.minsize(480, 360)
+
+     window1.config(background='')
+     Label_title = Label (window1, text="Voulez-vous quitter ?", font=("Courrier", 40), bg='white', fg='black')
+     Label_title.pack(side=TOP, expand=YES)
+
+     accept_button = Button(window1, text="Oui", font=("Courrier", 20), bg='white', fg='Black',command=exitall)
+     accept_button.pack(side=LEFT,pady=25,expand=YES)
+
+     refuse_button = Button(window1, text="Non", font=("Courrier", 20), bg='white', fg='Black',command=window1.destroy)
+     refuse_button.pack(side=RIGHT,pady=25,expand=YES)
+
+     window1.mainloop()
+
+    elif password2 in crash_password :
       exit()
     else :
       print("Refusé")
@@ -198,11 +314,11 @@ def task_lock():
 def task_update() :
   print("\
     ")
-  print("                              Mises a jours")
+  print("                              Infos de la V1.11")
   time.sleep(0.5)
   print("\
      ")
-  print("Ajouts d'une fenettre pour qui demande si oui ou non vous voulez quitter le terminal.")
+  print("Sécuritée augmenté (pour le terminalseulement). :)")
 
 
 
@@ -230,7 +346,7 @@ def task_dessin() :
  time.sleep(0.5)
  print("     \_=_/")
  time.sleep(0.5)
- print("     _| |_")   
+ print("     _| |_")
  time.sleep(0.5)
  print("    | | | |")
  time.sleep(0.5)
@@ -249,15 +365,48 @@ def task_admin_password(): #en création
       if password in good_password3 :
         print("Accépté en tant que : Administrateur.")
         password_ok3 = True
-        admin = 1
-        admin_vrai == True
+        admin = "oui"
       elif password in exit_password :
-        print("Tu n'ais pas admin.")
+        print("Tu n'es pas administrateur.")
         password_ok3 = True
+        admin = "non"
       else :
        print("Refusé")
 
+#Easter egg pour les chercheurs
+def task_vac():
+  print("\
+    ")
+  print("Vive")
+  time.sleep(0.5)
+  print("Les")
+  time.sleep(0.5)
+  print("Vacances")
+  time.sleep(0.5)
+  print("!!!")
+  time.sleep(0.5)
+  print("\
+    ")
 
+
+#vive la secu
+def secu_task():
+  print("La sécurité du terminal et de la machine est optimale.")
+
+#repertoire des mots de passes
+def rep_task():
+  print("\
+    ")
+  print("1.{}".format(good_passwords1))
+  time.sleep(0.5)
+  print("2.{}".format(good_passwords2))
+  time.sleep(0.5)
+  print("3.(admin) {}".format(good_passwords3))
+  print("\
+    ")
+
+def crash_task():
+  exit()
 
 
 #le help pour la machine
@@ -266,9 +415,9 @@ dico_task_no_admin = {
      '?'       : task_help,
      'quit'    : task_exit,
      'exit'    : task_exit,
-     'site'    : task_site,
+     'site'    : task_sites,
      'lock'    : task_lock,
-     'update'  : task_update,
+     'info'    : task_update,
      'pseudo1' : task_pseudo1,
      'pseudo2' : task_pseudo2,
      'pseudo 1': task_pseudo1,
@@ -276,23 +425,40 @@ dico_task_no_admin = {
      'dessin'  : task_dessin,
      'admin'   : task_admin_password,
      'name'    : task_name,
+     'vac'     : task_vac,
+     'secu'    : secu_task,
+     'rep'     : rep_task,
+     'crash'   : crash_task,
+     'stop'    : crash_task,
      }
 
-
+#en création car le help de la machine lorsque admin : on
 dico_task_admin = {
-  'name' : task_name
+     'help'    : task_help,
+     '?'       : task_help,
+     'quit'    : task_exit,
+     'exit'    : task_exit,
+     'site'    : task_sites,
+     'lock'    : task_lock,
+     'info'    : task_update,
+     'pseudo1' : task_pseudo1,
+     'pseudo2' : task_pseudo2,
+     'pseudo 1': task_pseudo1,
+     'pseudo 2': task_pseudo2,
+     'dessin'  : task_dessin,
+     'admin'   : task_admin_password,
+     'name'    : task_name,
 }
-
-if admin == 1 :
- while admin_vrai == True :
-   dico_task_admin.get(user_command, task_unknown)()
-   dico_task_no_admin.get(user_command, task_unknown)()
-
 
 
 #pour le terminal
 while terminal_launched :
-  user_command = input(f"[{terminal_name}]> ")
-  dico_task_no_admin.get(user_command, task_unknown)()
+  #en création pour monde admin : on ou : off
+ while admin == "oui" :
+   user_admin_command = input(f"[admin]> ")
+   dico_task_admin.get(user_command, task_unknown)()
+ while admin == "non" :
+   user_command = input(f"[{terminal_name}]> ")
+   dico_task_no_admin.get(user_command, task_unknown)()
 
-#la suite bientôt
+#la suite bientôt dans la V1.12
