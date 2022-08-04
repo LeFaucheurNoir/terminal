@@ -11,3 +11,6 @@ update : affiche les updates.
 pseudo1 : change le pseudo1 en nom choisis.                                                                                                                             
 pseudo2 : change le pseudo2 en le nom choisis.                                                                                                                           
 dessin : dessine un petit personnage sympathique.                                                                                                                       
+vac : easter egg
+crash : arrete le terminal sans la fenettre de demande de quitter
+stop : arrete le terminal sans la fenettre de demande de quitter
