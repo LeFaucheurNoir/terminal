@@ -318,7 +318,7 @@ def task_update() :
   time.sleep(0.5)
   print("\
      ")
-  print("Sécuritée augmenté (pour le terminalseulement). :)")
+  print("Sécuritée augmenté (pour le terminal seulement). :) Et une fenettre pour site et discord.")
 
 
 
