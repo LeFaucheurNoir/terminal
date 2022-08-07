@@ -55,7 +55,7 @@ def site():
      frame = Frame(windowsite, bg='blue', bd=2, relief=SUNKEN)
 
      windowsite.title("Site")
-     windowsite.geometry("500x200")
+     windowsite.geometry("1700x1000")
      windowsite.minsize(480, 360)
 
      windowsite.config(background='')
@@ -76,7 +76,7 @@ def discord():
      frame = Frame(windowdiscord, bg='blue', bd=2, relief=SUNKEN)
 
      windowdiscord.title("Discord")
-     windowdiscord.geometry("500x200")
+     windowdiscord.geometry("1700x1000")
      windowdiscord.minsize(480, 360)
 
      windowdiscord.config(background='')
@@ -133,7 +133,7 @@ while not password_ok :
       time.sleep(0.5)
       print("3.(admin) {}".format(good_passwords3))
       time.sleep(0.5)
-      print("Si vous mettez le numéro du mot de passe cela marcheras également sauf le mot de passe admin.")
+      print("Si vous mettez le numéro du mot de passe cela marcheras également sauf le mot de passe pour le mode admin.")
       print("\
       ")
   elif password in exit_password :
@@ -391,6 +391,28 @@ def task_vac():
 
 #vive la secu
 def secu_task():
+  print("Vérification : 0%")
+  time.sleep(0.3)
+  print("Vérification : 10%")
+  time.sleep(0.3)
+  print("Vérification : 20%")
+  time.sleep(0.3)
+  print("Vérification : 30%")
+  time.sleep(0.3)
+  print("Vérification : 40%")
+  time.sleep(0.3)
+  print("Vérification : 50%")
+  time.sleep(0.3)
+  print("Vérification : 60%")
+  time.sleep(0.3)
+  print("Vérification : 70%")
+  time.sleep(0.3)
+  print("Vérification : 80%")
+  time.sleep(0.3)
+  print("Vérification : 90%")
+  time.sleep(0.3)
+  print("Vérification : 100%")
+  time.sleep(0.3)
   print("La sécurité du terminal et de la machine est optimale.")
 
 #repertoire des mots de passes
