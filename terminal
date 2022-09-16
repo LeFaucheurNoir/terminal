@@ -4,6 +4,7 @@
 import time
 from tkinter import *
 import webbrowser
+from random import shuffle
 
 #pour les liens
 site = "https://portalia-1.jimdosite.com/"
@@ -31,6 +32,9 @@ admin_vrai = False #en création
 admin_faux = True #en création
 admin = "non"
 password_ok3 = True
+
+#pour le générateur de mots de passes
+mdp = ["a","a","b","b","c","c","d","d","e","e","f","f","g","g","h","h","i","i","j","j","k","k","l","l","m","m","n","n","o","o","p","p","q","q","r","r","s","s","t","t","u","u","v","v","w","w","x","x","y","y","z","z","1","1","2","2","3","3","4","4","5","5","6","6","7","7","8","8","9","9"]
 
 
 #pour le terminal
@@ -221,6 +225,8 @@ def task_help():
      time.sleep(0.5)
      print("|rep     : affiche les mots de passes                                |")
      time.sleep(0.5)
+     print("|gen     : génere un mot de passe aléatoire de 20 caractères         |")
+     time.sleep(0.5)
      print("\\====================================================================/")
 
 
@@ -314,11 +320,11 @@ def task_lock():
 def task_update() :
   print("\
     ")
-  print("                              Infos de la V1.11")
+  print("                              Infos de la V2.13")
   time.sleep(0.5)
   print("\
      ")
-  print("Sécuritée augmenté (pour le terminal seulement). :) Et une fenettre pour site et discord.")
+  print("Un générateur de mots de passes aléatoire de 20 caractères pour une sécurité optimum à été ajouté par LeFaucheurNoir.")
 
 
 
@@ -430,6 +436,31 @@ def rep_task():
 def crash_task():
   exit()
 
+def gen_mdp_task():
+ shuffle(mdp)
+ mdp1 = mdp[0]
+ mdp2 = mdp[1]
+ mdp3 = mdp[2]
+ mdp4 = mdp[3]
+ mdp5 = mdp[4]
+ mdp6 = mdp[5]
+ mdp7 = mdp[6]
+ mdp8 = mdp[7]
+ mdp9 = mdp[8]
+ mdp10 = mdp[9]
+ mdp11 = mdp[10]
+ mdp12 = mdp[11]
+ mdp13 = mdp[12]
+ mdp14 = mdp[13]
+ mdp15 = mdp[14]
+ mdp16 = mdp[15]
+ mdp17 = mdp[16]
+ mdp18 = mdp[17]
+ mdp19 = mdp[18]
+ mdp20 = mdp[19]
+ print("Le mot de passe généré est : ")
+ print(mdp1,mdp2,mdp3,mdp4,mdp5,mdp6,mdp7,mdp8,mdp9,mdp10,mdp11,mdp12,mdp13,mdp14,mdp15,mdp16,mdp17,mdp18,mdp19,mdp20)
+
 
 #le help pour la machine
 dico_task_no_admin = {
@@ -452,6 +483,8 @@ dico_task_no_admin = {
      'rep'     : rep_task,
      'crash'   : crash_task,
      'stop'    : crash_task,
+     'name'    : task_name,
+     'gen'     : gen_mdp_task
      }
 
 #en création car le help de la machine lorsque admin : on
@@ -483,4 +516,4 @@ while terminal_launched :
    user_command = input(f"[{terminal_name}]> ")
    dico_task_no_admin.get(user_command, task_unknown)()
 
-#la suite bientôt dans la V1.12
+#la suite bientôt dans la V2.14
