@@ -1,6 +1,8 @@
 #tout est important
 #pour l'utiliser il vous faut une version de python sur votre machine et un logiciel pour coder
 #il vous suffiras de copier le code et de le coler dans le logiciel de codage avec le language python
+#sinon vous pouvez utiliser https://www.programiz.com/python-programming/online-compiler/ pour ne rien installer
+
 import time
 from tkinter import *
 import webbrowser
