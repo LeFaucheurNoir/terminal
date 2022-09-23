@@ -35,12 +35,13 @@ admin = "non"
 password_ok3 = True
 
 #pour le générateur de mots de passes
-mdp = ["a","a","b","b","c","c","d","d","e","e","f","f","g","g","h","h","i","i","j","j","k","k","l","l","m","m","n","n","o","o","p","p","q","q","r","r","s","s","t","t","u","u","v","v","w","w","x","x","y","y","z","z","1","1","2","2","3","3","4","4","5","5","6","6","7","7","8","8","9","9"]
+mdp = ["a","a","b","b","c","c","d","d","e","e","f","f","g","g","h","h","i","i","j","j","k","k","l","l","m","m","n","n","o","o","p","p","q","q","r","r","s","s","t","t","u","u","v","v","w","w","x","x","y","y","z","z","1","1","2","2","3","3","4","4","5","5","6","6","7","7","8","8","9","9",".",".","!","!","?","?",",",",","-","-","+","+"]
 
 
 #pour le terminal
 terminal_name = "Portalia"
 terminal_launched = True
+admin_terminal_launched = False
 
 
 #pour les commandes
@@ -231,8 +232,6 @@ def task_help():
      print("\\====================================================================/")
 
 
-
-#le name qui ne marche pas encore
 def task_name():
   global terminal_name
   terminal_name = input("Remplacer {} par : ".format(terminal_name))
@@ -321,11 +320,11 @@ def task_lock():
 def task_update() :
   print("\
     ")
-  print("                              Infos de la V2.13")
+  print("                              Infos de la V2.14")
   time.sleep(0.5)
   print("\
      ")
-  print("Un générateur de mots de passes aléatoire de 20 caractères pour une sécurité optimum à été ajouté par LeFaucheurNoir.")
+  print("Des caractères spéciaux ont été ajoutés au générateur de mots de passes par LeFaucheurNoir pour un mot de passe encore plus sécurisé.")
 
 
 
@@ -372,7 +371,8 @@ def task_admin_password(): #en création
       if password in good_password3 :
         print("Accépté en tant que : Administrateur.")
         password_ok3 = True
-        admin = "oui"
+        admin_terminal_launched = True
+        terminal_launched = False
       elif password in exit_password :
         print("Tu n'es pas administrateur.")
         password_ok3 = True
@@ -460,7 +460,15 @@ def gen_mdp_task():
  mdp19 = mdp[18]
  mdp20 = mdp[19]
  print("Le mot de passe généré est : ")
- print(mdp1,mdp2,mdp3,mdp4,mdp5,mdp6,mdp7,mdp8,mdp9,mdp10,mdp11,mdp12,mdp13,mdp14,mdp15,mdp16,mdp17,mdp18,mdp19,mdp20)
+ print("\
+ ")
+ print(f"{mdp1}{mdp2}{mdp3}{mdp4}{mdp5}{mdp6}{mdp7}{mdp8}{mdp9}{mdp10}{mdp11}{mdp12}{mdp13}{mdp14}{mdp15}{mdp16}{mdp17}{mdp18}{mdp19}{mdp20}")
+ print("\
+  ")
+ print("Pour en générer un autre refaites la commande gen.")
+
+def test_admin():
+  print("admin")
 
 
 #le help pour la machine
@@ -504,17 +512,18 @@ dico_task_admin = {
      'dessin'  : task_dessin,
      'admin'   : task_admin_password,
      'name'    : task_name,
+     'tst'     : test_admin,
 }
 
 
 #pour le terminal
 while terminal_launched :
-  #en création pour monde admin : on ou : off
- while admin == "oui" :
-   user_admin_command = input(f"[admin]> ")
-   dico_task_admin.get(user_command, task_unknown)()
- while admin == "non" :
    user_command = input(f"[{terminal_name}]> ")
    dico_task_no_admin.get(user_command, task_unknown)()
 
-#la suite bientôt dans la V2.14
+while admin_terminal_launched :
+    #en création pour mode admin : on ou : off
+   user_admin_command = input(f"[admin]> ")
+   dico_task_admin.get(user_admin_command, task_unknown)()
+
+#la suite bientôt dans la V2.15
