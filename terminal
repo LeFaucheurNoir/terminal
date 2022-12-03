@@ -6,6 +6,7 @@ import time
 from tkinter import *
 import webbrowser
 from random import shuffle
+import os
 
 #pour les liens
 site = "https://portalia-1.jimdosite.com/"
@@ -229,12 +230,15 @@ def task_help():
      time.sleep(0.5)
      print("|gen     : génere un mot de passe aléatoire de 20 caractères         |")
      time.sleep(0.5)
+     print("|admin   : permet de passer en mode administrateur et avoir accès a  |")
+     time.sleep(0.5)
+     print("|toutes les commandes utiles                                         |")
+     time.sleep(0.5)
      print("\\====================================================================/")
 
 
 def task_name():
-  global terminal_name
-  terminal_name = input("Remplacer {} par : ".format(terminal_name))
+  print("Vous ne pouvez pas changer le nom du terminal si vous n'êtes pas administrateur pour passer en mode administrateur faites la commande admin.")
 
 
 #le site et le serveur
@@ -320,11 +324,11 @@ def task_lock():
 def task_update() :
   print("\
     ")
-  print("                              Infos de la V2.14")
+  print("                              Infos de la V2.15")
   time.sleep(0.5)
   print("\
      ")
-  print("Des caractères spéciaux ont été ajoutés au générateur de mots de passes par LeFaucheurNoir pour un mot de passe encore plus sécurisé.")
+  print("Le mode Administrateur enfin disponible pour tous avc le terminal d'extension ADMIN.")
 
 
 
@@ -363,7 +367,7 @@ def task_dessin() :
  print("     _| |_")
 
 
-def task_admin_password(): #en création
+def task_admin_password():
      password_ok3 = False
      while not password_ok3 :
       password = input("Mot de passe : ")
@@ -371,12 +375,10 @@ def task_admin_password(): #en création
       if password in good_password3 :
         print("Accépté en tant que : Administrateur.")
         password_ok3 = True
-        admin_terminal_launched = True
-        terminal_launched = False
+        os.system("python admin_terminal.py")
       elif password in exit_password :
         print("Tu n'es pas administrateur.")
         password_ok3 = True
-        admin = "non"
       else :
        print("Refusé")
 
@@ -467,12 +469,9 @@ def gen_mdp_task():
   ")
  print("Pour en générer un autre refaites la commande gen.")
 
-def test_admin():
-  print("admin")
-
 
 #le help pour la machine
-dico_task_no_admin = {
+dico_task = {
      'help'    : task_help,
      '?'       : task_help,
      'quit'    : task_exit,
@@ -496,34 +495,12 @@ dico_task_no_admin = {
      'gen'     : gen_mdp_task
      }
 
-#en création car le help de la machine lorsque admin : on
-dico_task_admin = {
-     'help'    : task_help,
-     '?'       : task_help,
-     'quit'    : task_exit,
-     'exit'    : task_exit,
-     'site'    : task_sites,
-     'lock'    : task_lock,
-     'info'    : task_update,
-     'pseudo1' : task_pseudo1,
-     'pseudo2' : task_pseudo2,
-     'pseudo 1': task_pseudo1,
-     'pseudo 2': task_pseudo2,
-     'dessin'  : task_dessin,
-     'admin'   : task_admin_password,
-     'name'    : task_name,
-     'tst'     : test_admin,
-}
 
 
 #pour le terminal
 while terminal_launched :
    user_command = input(f"[{terminal_name}]> ")
-   dico_task_no_admin.get(user_command, task_unknown)()
+   dico_task.get(user_command, task_unknown)()
 
-while admin_terminal_launched :
-    #en création pour mode admin : on ou : off
-   user_admin_command = input(f"[admin]> ")
-   dico_task_admin.get(user_admin_command, task_unknown)()
 
-#la suite bientôt dans la V2.15
+#la suite bientôt dans la V2.16
