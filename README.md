@@ -19,3 +19,4 @@ gen : génerre un mot de passe aléatoire de 20 caractères pour une sécuritée
 
 Pour utiliser l'extension administrateur lorsque vous enregistrez le terminal appelez le terminal : terminal.py et dans un autre fichier texte qui utilise l'extension python collez le code de l'extension admin du terminal et vous nommez ce fichier admin_terminal.py vous devez également mettre les deux fichiers textes dans le même fichier si vous voulez de l'aide contactez Artac#6571 sur discord.
 De nouvelles commandes ont faire leurs apparition elles sont sympas allez les tester.
+V2.17
