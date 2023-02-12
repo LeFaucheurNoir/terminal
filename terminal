@@ -50,6 +50,8 @@ admin_terminal_launched = False
 user_command = ""
 user_admin_command = ""
 
+
+#les adresses discord et site
 def siteadresse():
   webbrowser.open_new_tab("https://portalia-1.jimdosite.com")
 
@@ -57,7 +59,7 @@ def siteadresse():
 def discordadresse():
   webbrowser.open_new_tab("https://discord.io/Portaliafr")
   
-
+#la fenetre du site
 def site():
      windowsite = Tk()
      frame = Frame(windowsite, bg='blue', bd=2, relief=SUNKEN)
@@ -78,7 +80,7 @@ def site():
 
      windowsite.mainloop()
 
-
+#la fenetre de discord
 def discord():
      windowdiscord = Tk()
      frame = Frame(windowdiscord, bg='blue', bd=2, relief=SUNKEN)
@@ -245,7 +247,7 @@ def task_help():
      time.sleep(0.5)
      print("\\====================================================================/")
 
-
+#la commande permettant de changer le nom entre crochets
 def task_name():
   print("Vous ne pouvez pas changer le nom du terminal si vous n'êtes pas administrateur pour passer en mode administrateur faites la commande admin.")
 
@@ -333,11 +335,11 @@ def task_lock():
 def task_update() :
   print("\
     ")
-  print("                              Infos de la V2.16")
+  print("                              Infos de la V2.17")
   time.sleep(0.5)
   print("\
      ")
-  print("Vous pouvez dès maintenant enregistrer et sauvegarder les mots de passe générés et une sauvegarde de un de place est dès maintenant disponible pour sauvegarder tous textes voulus. Attention : toutes choses enregistrés sont perdu une fois le teminal arrété.")
+  print("Clarrification de certain endroits dans le code pour ceux qui vouraient s'amuser a le modifier ou le comprendre.")
 
 
 
@@ -375,7 +377,7 @@ def task_dessin() :
  time.sleep(0.5)
  print("     _| |_")
 
-
+#le mdp pour accéder au mode admin du terminal
 def task_admin_password():
      password_ok3 = False
      while not password_ok3 :
@@ -445,9 +447,11 @@ def rep_task():
   print("\
     ")
 
+#commande permettant de faire crash le terminal pour l'arreter d'un coup sans la fenetre de demande
 def crash_task():
   exit()
 
+#mélangeur permettant un mot de passe très compliqué
 def gen_mdp_task():
  shuffle(mdp)
  mdp1 = mdp[0]
@@ -483,6 +487,8 @@ def gen_mdp_task():
  print("Tappez repmdp pour afficher la liste des mots de passe enregistré.")
  argument = input("Numéro : ")
 
+
+# le système de sauvegarde des mots de passes générés par le terminal
  if argument == "1" :
     global mdp_save_1
     mdp_save_1 = (f"{mdpall}")
@@ -498,7 +504,7 @@ def gen_mdp_task():
  else :
     print("Le numéro entré est trop haut ou bien n'est pas un numéro ou est invalide.")
 
-
+#permet d'effacer des mots de passes enregistrés de la mémoire
 def clear_mdps() :
   print("Entrez le numéro du mot de passe que vous souhaitez suprimmer.")
   argument2 = input("Numéro : ")
@@ -517,23 +523,24 @@ def clear_mdps() :
   else :
     print("Le numéro entré est trop haut ou bien n'est pas un numéro ou est invalide.")
 
-
+#permet d'afficher les mots de passes sauvegardés
 def repmdp() :
   print("1. {}".format(mdp_save_1))
   print("2. {}".format(mdp_save_2))
   print("3. {}".format(mdp_save_3))
 
-
+#permet de créer une sauvegarde complétement personnalisée
 def save() :
   print("Entrez le texte que vous souhaitez enregistrer. Attention seulement une sauvegarde est prévue pour cela.")
   global all_save_1
   all_save_1 = input("Texte : ")
 
+#permet d'afficher la sauvegarde personnalisée
 def print_save() :
   global all_save_1
   print(f"{all_save_1}")
 
-#le help pour la machine
+#le help pour la machine qui lui permet de lancer ce qu'il faut lors de l'envoie de la commande
 dico_task = {
      'help'    : task_help,
      '?'       : task_help,
@@ -570,4 +577,4 @@ while terminal_launched :
    dico_task.get(user_command, task_unknown)()
 
 
-#la suite bientôt dans la V2.17
+#la suite bientôt dans la V2.18
